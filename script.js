@@ -171,9 +171,11 @@ const addEditClick = () => {
 				gamesList[indx].imageUrl = newImage
 
 				const cardList = document.querySelectorAll(".card")
-				console.log(cardList, "index: " + indx)
-				gameContainer.innerHTML = ""
-				cardShow()
+				document.querySelectorAll(".card-title")[indx].innerHTML = newTitle
+				document.querySelectorAll(".card-text")[
+					indx
+				].innerHTML = `Year: ${newYear} `
+				document.querySelectorAll(".card-img-top")[indx].src = newImage
 			})
 		})
 	})
