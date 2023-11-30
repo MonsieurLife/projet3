@@ -150,14 +150,10 @@ editBtnArray.forEach((btn, indx) => {
 				return
 			}
 			/*  odd characters  */
-			const alphanumericRegex = /^[a-zA-Z0-9/.:-_]+$/
-			var urlRegex =
-				/^(https?:\/\/)?([\da-zA-Z.-]+)\.([a-zA-Z.]{2,})(\/[\w.-]*)*\/?$/
-
+			const alphanumericRegex = /^[a-zA-Z0-9/.:-_ 'éùçà()]+$/
 			if (
 				!alphanumericRegex.test(newTitle) ||
-				!alphanumericRegex.test(newYear) ||
-				!alphanumericRegex.test(newImage)
+				!alphanumericRegex.test(newYear)
 			) {
 				alert("Certaines characters sont pas vailde")
 				return
