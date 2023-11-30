@@ -142,7 +142,6 @@ editBtnArray.forEach((btn, indx) => {
 			const newYear = formulaire["year"].value
 			const newImage = formulaire["image"].value
 
-			// console.log(newTitle, newImage, newYear)
 			/*  form validation  */
 			/*  empty fields  */
 			if (newTitle === "" || newYear === "" || newImage === "") {
@@ -158,6 +157,8 @@ editBtnArray.forEach((btn, indx) => {
 				alert("Certaines characters sont pas vailde")
 				return
 			}
+
+			console.log(newTitle, newImage, newYear)
 		})
 	})
 })

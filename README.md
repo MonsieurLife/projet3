@@ -16,6 +16,9 @@ Welcome to the GameList Manager repository! This project utilizes Bootstrap 5 fo
 
 - Dynamic Updates: JavaScript is used to dynamically update the game list without requiring a page refresh.
 
+![Game manager](screenshot.jpg)
+![Game manager](screenshot-2.jpg)
+
 ## Technologies Used
 
 - _Bootstrap 5:_ Utilized for the responsive and modern user interface.
