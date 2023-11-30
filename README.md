@@ -12,6 +12,8 @@ Welcome to the GameList Manager repository! This project utilizes Bootstrap 5 fo
 
 - CRUD Operations: Perform Create, Read, Update, and Delete operations on the game list.
 
+- Form validation with some basic regular expressions used to avoid weird characters sent into our webb app.
+
 - Dynamic Updates: JavaScript is used to dynamically update the game list without requiring a page refresh.
 
 ## Technologies Used
@@ -38,4 +40,4 @@ Welcome to the GameList Manager repository! This project utilizes Bootstrap 5 fo
 
 - Bootstrap for providing an excellent front-end framework.
 - JavaScript community for the dynamic scripting capabilities.
-- ENSEA students generation 2021
+- ENSEA students generation 2021 - TP 3
