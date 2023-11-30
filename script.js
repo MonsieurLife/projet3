@@ -41,9 +41,10 @@ const modalTitle = document.querySelector(".modal-title")
 const modalBody = document.querySelector(".modal-body")
 const modalFooter = document.querySelector(".modal-footer")
 
-// bucle pour afficher les games
-gamesList.forEach((game) => {
-	gameContainer.innerHTML += `
+const cardShow = () => {
+	// bucle pour afficher les games
+	gamesList.forEach((game) => {
+		gameContainer.innerHTML += `
         <article class="col">
            <div class="card shadow-sm">
               <img src="${game.imageUrl}" class="card-img-top" alt="...">
@@ -72,7 +73,10 @@ gamesList.forEach((game) => {
            </div>
         </article>
     `
-})
+	})
+}
+
+cardShow()
 
 // ratraper le button "views"
 const viewBtnArray = document.querySelectorAll(".view")
@@ -97,10 +101,12 @@ viewBtnArray.forEach((btn, index) => {
 	})
 })
 
-editBtnArray.forEach((btn, indx) => {
-	btn.addEventListener("click", () => {
-		modalTitle.textContent = "Edit mode !"
-		modalBody.innerHTML = `
+const addEditClick = () => {
+	editBtnArray.forEach((btn, indx) => {
+		btn.addEventListener("click", () => {
+			console.log(indx)
+			modalTitle.textContent = "Edit mode !"
+			modalBody.innerHTML = `
             <form>
                 <div class="mb-3">
                     <label for="title" class="form-label">Title</label>
@@ -121,7 +127,7 @@ editBtnArray.forEach((btn, indx) => {
                     <img class="img-thumbnail w-50 mt-2" src="${gamesList[indx].imageUrl}" >
                 </div>     
         `
-		modalFooter.innerHTML = `
+			modalFooter.innerHTML = `
             <button
                 type="button" class="btn btn-secondary" data-bs-dismiss="modal"
             >
@@ -133,32 +139,44 @@ editBtnArray.forEach((btn, indx) => {
             </form>
         `
 
-		/*  form handling   */
-		const submitBtn = document.querySelector("#sub-btn")
+			/*  form handling   */
+			const submitBtn = document.querySelector("#sub-btn")
 
-		submitBtn.addEventListener("click", () => {
-			const formulaire = document.querySelector("form")
-			const newTitle = formulaire["title"].value
-			const newYear = formulaire["year"].value
-			const newImage = formulaire["image"].value
+			submitBtn.addEventListener("click", () => {
+				const formulaire = document.querySelector("form")
+				let newTitle = formulaire["title"].value
+				let newYear = formulaire["year"].value
+				var newImage = formulaire["image"].value
 
-			/*  form validation  */
-			/*  empty fields  */
-			if (newTitle === "" || newYear === "" || newImage === "") {
-				alert("Certaines parties de votre formulaire sont vides")
-				return
-			}
-			/*  odd characters  */
-			const alphanumericRegex = /^[a-zA-Z0-9/.:-_ 'éùçà()]+$/
-			if (
-				!alphanumericRegex.test(newTitle) ||
-				!alphanumericRegex.test(newYear)
-			) {
-				alert("Certaines characters sont pas vailde")
-				return
-			}
+				/*  form validation  */
+				/*  empty fields  */
+				if (newTitle === "" || newYear === "" || newImage === "") {
+					alert("Certaines parties de votre formulaire sont vides")
+					return
+				}
+				/*  odd characters  */
+				const alphanumericRegex = /^[a-zA-Z0-9/.:-_ 'éùçà()]+$/
+				if (
+					!alphanumericRegex.test(newTitle) ||
+					!alphanumericRegex.test(newYear)
+				) {
+					alert("Certaines characters sont pas vailde")
+					return
+				}
+				/*  tout ok, on enregistre  */
 
-			console.log(newTitle, newImage, newYear)
+				// console.log(newTitle, newImage, newYear, indx)
+				gamesList[indx].title = newTitle
+				gamesList[indx].year = newYear
+				gamesList[indx].imageUrl = newImage
+
+				const cardList = document.querySelectorAll(".card")
+				console.log(cardList, "index: " + indx)
+				gameContainer.innerHTML = ""
+				cardShow()
+			})
 		})
 	})
-})
+}
+
+addEditClick()
