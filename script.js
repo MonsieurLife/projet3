@@ -127,10 +127,41 @@ editBtnArray.forEach((btn, indx) => {
             >
                 Close
             </button>
-            <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">
+            <button type="submit" class="btn btn-primary" id="sub-btn" data-bs-dismiss="modal">
                 Save changes
             </button>
             </form>
         `
+
+		/*  form handling   */
+		const submitBtn = document.querySelector("#sub-btn")
+
+		submitBtn.addEventListener("click", () => {
+			const formulaire = document.querySelector("form")
+			const newTitle = formulaire["title"].value
+			const newYear = formulaire["year"].value
+			const newImage = formulaire["image"].value
+
+			// console.log(newTitle, newImage, newYear)
+			/*  form validation  */
+			/*  empty fields  */
+			if (newTitle === "" || newYear === "" || newImage === "") {
+				alert("Certaines parties de votre formulaire sont vides")
+				return
+			}
+			/*  odd characters  */
+			const alphanumericRegex = /^[a-zA-Z0-9/.:-_]+$/
+			var urlRegex =
+				/^(https?:\/\/)?([\da-zA-Z.-]+)\.([a-zA-Z.]{2,})(\/[\w.-]*)*\/?$/
+
+			if (
+				!alphanumericRegex.test(newTitle) ||
+				!alphanumericRegex.test(newYear) ||
+				!alphanumericRegex.test(newImage)
+			) {
+				alert("Certaines characters sont pas vailde")
+				return
+			}
+		})
 	})
 })
